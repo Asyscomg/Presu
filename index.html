@@ -4,7 +4,7 @@
     
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=60mm, initial-scale=1.0"> <!-- Cambiar el ancho de la vista para el papel de 58mm -->
-    <title>Presupuesto</title>
+    <title>Ticket de Compra</title>
     <style>
      body {
             font-family: tahoma, Helvetica, sans-serif;
@@ -65,28 +65,20 @@
           padding: 0;
           line-height: 1;
       }
-    .fecha {
+      .nro_boleta {
         margin: 0;
         padding: 0;
     }
-    .idfactura {
+    .nro_mesa {
         margin: 0;
     }
-    .idcliente {
+    .fecha_recepcion {
         margin: 0;
     }
     
-    .subtotal {
+    .info-tienda {
         margin: 0;
     }
-
-    .iva {
-        margin: 0;
-    }   
-    .total {
-        margin: 0;
-    }
-
     .m-0 {
         margin: 0;
     }
@@ -105,26 +97,25 @@
         const params = new URLSearchParams(window.location.search);
 
         // Obtener los valores de los parámetros
-        var fecha = params.has('fecha') ? params.get('fecha') : "dd/mm/aaaa hh:mm:ss";
-        var idfactura = params.has('idfactura') ? params.get('idfactura') : "---";
-        var idcliente = params.has('idcliente') ? params.get('idcliente') : "---";
-        var subtotal = params.has('subtotal') ? params.get('subtotal') : "---";
-        var iva = params.has('iva') ? params.get('iva') : "---";
-        var total = params.has('total') ? params.get('total') : "";
+        var nro_boleta = params.has('boleta') ? params.get('boleta') : "---";
+        var nro_mesa = params.has('mesa') ? params.get('mesa') : "---";
+        var direc = params.has('direccion') ? params.get('direccion') : "---";
         
-        var totalE  = params.has('totalElement') ? params.get('totalElement') : "";
-        var fecha_entrega = params.has('fecha') ? params.get('fecha') : "hh:mm:ss";
+
+        var fecha = params.has('fecha') ? params.get('fecha') : "dd/mm/aaaa hh:mm:ss";
+        var fecha_entrega = params.has('fecha_entrega') ? params.get('fecha_entrega') : "hh:mm:ss";
         var domi = params.has('domi') ? params.get('domi') : "N/A";
         var propina = params.has('propina') ? params.get('propina') : "N/A";
 
-        var subtotal_desc = params.has('subtotal') ? params.get('subtotal') : " ";
+        var total = params.has('total') ? params.get('total') : "";
+        var subtotal_desc = params.has('subtotal_desc') ? params.get('subtotal_desc') : " ";
         var descuento = params.has('descuento') ? params.get('descuento') : " ";
         var estado = params.has('estado') ? params.get('estado') : "--";
 
         //Recibe los datos de los servicios (separados por comas)
         var cantidades = params.has('cantidades') ? params.get('cantidades') : "0";
-        var descripciones = params.has('descripciones') ? params.get('descripciones') : "No hay articulos";
-        var p_units = params.has('precio') ? params.get('precio') : "0.00";
+        var descripciones = params.has('servicios') ? params.get('servicios') : "No hay articulos";
+        var p_units = params.has('p_unit') ? params.get('p_unit') : "0.00";
         
         //Formato de 2 decimales
         propina = parseFloat(propina).toLocaleString('es-ES', { minimumFractionDigits: 0 });
@@ -467,24 +458,23 @@
             <p class="info-tienda">
                 Nit: 
                 <br>
-                Domicilio 304 4430427 / Mistares Etapa 2 Frente Bourboun
+                Domicilios 304 4430427 / Mistares Etapa 2 Frente Bourboun
                 <br>
                 
             </p>
         </div>
         
         <div class="label">
-            <b>PRESUPUESTO:</b>
-            <h1 class="idfactura" id="idfactura_id"></h1>
-            <h1 class="subtotal" id="subtotal_id">---</h1>
-            <h3 class="total" id="total_id">---</h3>
-            <h3 class="totalElement" id="total_Element">---</h3>
+            <b>TICKET:</b>
+            <h1 class="nro_boleta" id="nro_boleta_id"></h1>
+            <h1 class="nro_mesa" id="nro_mesa_id">---</h1>
+            <h3 class="direccion" id="nro_direccion_id">---</h3>
         </div>
         <div class="label">
             <p class="fecha_recepcion">
                 FECHA DE RECEPCION:
                 <br>
-                <b id="fecha">dd/mm/aaaa hh:mm:ss</b>
+                <b id="fechaR">dd/mm/aaaa hh:mm:ss</b>
                 <b span="" id="hora">hh:mm:ss</b>
             </p>
 
@@ -539,31 +529,21 @@
                     <td class=""  colspan="2" id="domicilioCell"><h4>DOMICILIO:</h4></td>
                     <td colspan="2"><h4 id="domi"></h4></td>
                 </tr>
-               
+               -->
                 <tr class="table-footer">
                     <td colspan="2"><h2>EFECTIVO:</h2></td>
                     <td colspan="2"><h2 id="efectivo">NaN</h2></td>
                     
                 </tr>
-                -->
-                <tr class="table-footer top-line"></tr>
-                    <td class="" colspan="2"><h2>SUBTOTAL:</h2></td>
-                    <td colspan="2"><h2 id="subtotal_id">NaN</h2></td>
-                </tr>
-                <tr class="table-footer top-line"></tr>
-                    <td class="" colspan="2"><h2>IVA:</h2></td>
-                    <td colspan="2"><h2 id="iva">NaN</h2></td>
-                </tr>
                 <tr class="table-footer top-line">
                     <td class="" colspan="2"><h2>TOTAL:</h2></td>
                     <td colspan="2"><h2 id="total">NaN</h2></td>
                 </tr>
-                <!--
                 <tr class="table-footer">
                     <td colspan="2"><h2>DEVUELTAS:</h2></td>
                     <td colspan="2"><h2 id="devueltas">NaN</h2></td>
                 </tr>
-                -->
+                
             </tbody>
         </table>
         <br>
@@ -576,27 +556,22 @@
             </p>
         
             <p class="m-0">
-               Presupuesto Taller
+               Facturas AutoSystem
                <br>
                Contactos:
                +57 315 820 8619
                <br>
-               Siguenos en redes sociales como @Taller
+               Siguenos en redes sociales como @AutoSystem
             </p>
     </div>
     <script>
-        
-        var fechaElement = document.getElementById("fechaR").textContent = fecha;
-        var idfacturaElement = document.getElementById("idfactura_id").textContent = idfactura;
-        var idclienteElement = document.getElementById("idcliente_id").textContent = idcliente;
-        var subtotalElement = document.getElementById("subtotal_id").textContent = subtotal;
-        var ivaElement = document.getElementById("iva_id").textContent = iva;
+        var nroBoletaElement = document.getElementById("nro_boleta_id").textContent = nro_boleta;
+        var nroMesaElement = document.getElementById("nro_mesa_id").textContent = nro_mesa;
         var nroDireccion = document.getElementById("nro_direccion_id").textContent = direc;
+
+
+        var fechaElement = document.getElementById("fechaR").textContent = fecha;
         var fecha_entregaElement = document.getElementById("hora").textContent = fecha_entrega;
-        var totalElement = document.getElementById("total").textContent = total;
-        var subtotal_descElement = document.getElementById("efectivo").textContent = descuento;
-        var descuentoElement = document.getElementById("devueltas").textContent = subtotal_desc;
-        var estadoElement = document.getElementById("estado").textContent = estado;
 
         /*const propinaCell = document.getElementById("propinaCell");
         var propinaElement = document.getElementById("propina");
@@ -619,6 +594,10 @@
              // Si domi no es "N/A", muestra el valor en el elemento <h2>
              domiElement.textContent = domi;
             }       */
+        var totalElement = document.getElementById("total").textContent = total;
+        var subtotal_descElement = document.getElementById("efectivo").textContent = descuento;
+        var descuentoElement = document.getElementById("devueltas").textContent = subtotal_desc;
+        var estadoElement = document.getElementById("estado").textContent = estado;
     </script>
 
 
