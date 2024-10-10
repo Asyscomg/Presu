@@ -98,7 +98,7 @@
 
         // Obtener los valores de los parámetros
         var nro_boleta = params.has('idfactura') ? params.get('idfactura') : "---";
-        var nro_mesa = params.has('mesa') ? params.get('mesa') : "---";
+        var nro_mesa = params.has('idcliente') ? params.get('idcliente') : "---";
         var direc = params.has('direccion') ? params.get('direccion') : "---";
         
 
@@ -108,13 +108,13 @@
         var propina = params.has('propina') ? params.get('propina') : "N/A";
 
         var total = params.has('total') ? params.get('total') : "";
-        var subtotal_desc = params.has('subtotal_desc') ? params.get('subtotal_desc') : " ";
+        var subtotal_desc = params.has('subtotal') ? params.get('subtotal') : " ";
         var descuento = params.has('descuento') ? params.get('descuento') : " ";
         var estado = params.has('estado') ? params.get('estado') : "--";
 
         //Recibe los datos de los servicios (separados por comas)
         var cantidades = params.has('cantidades') ? params.get('cantidades') : "0";
-        var descripciones = params.has('servicios') ? params.get('servicios') : "No hay articulos";
+        var descripciones = params.has('idarticulo') ? params.get('idarticulo') : "No hay articulos";
         var p_units = params.has('p_unit') ? params.get('p_unit') : "0.00";
         
         //Formato de 2 decimales
