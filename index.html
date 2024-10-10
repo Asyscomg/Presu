@@ -4,7 +4,7 @@
     
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=60mm, initial-scale=1.0"> <!-- Cambiar el ancho de la vista para el papel de 58mm -->
-    <title>Ticket de Compra</title>
+    <title>Presupuesto</title>
     <style>
      body {
             font-family: tahoma, Helvetica, sans-serif;
@@ -65,18 +65,25 @@
           padding: 0;
           line-height: 1;
       }
-      .nro_boleta {
+    .fecha {
         margin: 0;
         padding: 0;
     }
-    .nro_mesa {
+    .idfactura {
         margin: 0;
     }
-    .fecha_recepcion {
+    .idcliente {
         margin: 0;
     }
     
-    .info-tienda {
+    .subtotal {
+        margin: 0;
+    }
+
+    .iva {
+        margin: 0;
+    }   
+    .total {
         margin: 0;
     }
     .m-0 {
@@ -97,17 +104,17 @@
         const params = new URLSearchParams(window.location.search);
 
         // Obtener los valores de los parámetros
-        var nro_boleta = params.has('idfactura') ? params.get('idfactura') : "---";
-        var nro_mesa = params.has('idcliente') ? params.get('idcliente') : "---";
-        var direc = params.has('direccion') ? params.get('direccion') : "---";
-        
-
         var fecha = params.has('fecha') ? params.get('fecha') : "dd/mm/aaaa hh:mm:ss";
+        var idfactura = params.has('idfactura') ? params.get('idfactura') : "---";
+        var idcliente = params.has('idcliente') ? params.get('idcliente') : "---";
+        var subtotal = params.has('subtotal') ? params.get('subtotal') : "---";
+        var iva = params.has('iva') ? params.get('iva') : "---";
+        var total = params.has('total') ? params.get('total') : "---";
+        
         var fecha_entrega = params.has('fecha_entrega') ? params.get('fecha_entrega') : "hh:mm:ss";
         var domi = params.has('domi') ? params.get('domi') : "N/A";
         var propina = params.has('propina') ? params.get('propina') : "N/A";
 
-        var total = params.has('total') ? params.get('total') : "";
         var subtotal_desc = params.has('subtotal') ? params.get('subtotal') : " ";
         var descuento = params.has('descuento') ? params.get('descuento') : " ";
         var estado = params.has('estado') ? params.get('estado') : "--";
@@ -115,7 +122,7 @@
         //Recibe los datos de los servicios (separados por comas)
         var cantidades = params.has('cantidades') ? params.get('cantidades') : "0";
         var descripciones = params.has('descripciones') ? params.get('descripciones') : "No hay articulos";
-        var p_units = params.has('p_unit') ? params.get('p_unit') : "0.00";
+        var p_units = params.has('precio') ? params.get('precio') : "0.00";
         
         //Formato de 2 decimales
         propina = parseFloat(propina).toLocaleString('es-ES', { minimumFractionDigits: 0 });
@@ -458,15 +465,15 @@
             <p class="info-tienda">
                 Nit: 
                 <br>
-                Domicilios 304 4430427 / Mistares Etapa 2 Frente Bourboun
+                Domicilio 304 4430427 / Mistares Etapa 2 Frente Bourboun
                 <br>
                 
             </p>
         </div>
         
         <div class="label">
-            <b>TICKET:</b>
-            <h1 class="nro_boleta" id="nro_boleta_id"></h1>
+            <b>PRESUPUESTO:</b>
+            <h1 class="idfactura" id="idfactura_id"></h1>
             <h1 class="nro_mesa" id="nro_mesa_id">---</h1>
             <h3 class="direccion" id="nro_direccion_id">---</h3>
         </div>
@@ -556,16 +563,16 @@
             </p>
         
             <p class="m-0">
-               Facturas AutoSystem
+               Presupuesto Taller
                <br>
                Contactos:
                +57 315 820 8619
                <br>
-               Siguenos en redes sociales como @AutoSystem
+               Siguenos en redes sociales como @Taller
             </p>
     </div>
     <script>
-        var nroBoletaElement = document.getElementById("nro_boleta_id").textContent = nro_boleta;
+        var idfacturaElement = document.getElementById("idfactura_id").textContent = idfactura;
         var nroMesaElement = document.getElementById("nro_mesa_id").textContent = nro_mesa;
         var nroDireccion = document.getElementById("nro_direccion_id").textContent = direc;
 
