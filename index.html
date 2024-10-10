@@ -86,6 +86,7 @@
     .total {
         margin: 0;
     }
+
     .m-0 {
         margin: 0;
     }
@@ -474,14 +475,14 @@
         <div class="label">
             <b>PRESUPUESTO:</b>
             <h1 class="idfactura" id="idfactura_id"></h1>
-            <h1 class="nro_mesa" id="nro_mesa_id">---</h1>
-            <h3 class="direccion" id="nro_direccion_id">---</h3>
+            <h1 class="subtotal" id="subtotal_id">---</h1>
+            <h3 class="total" id="total_id">---</h3>
         </div>
         <div class="label">
             <p class="fecha_recepcion">
                 FECHA DE RECEPCION:
                 <br>
-                <b id="fechaR">dd/mm/aaaa hh:mm:ss</b>
+                <b id="fecha">dd/mm/aaaa hh:mm:ss</b>
                 <b span="" id="hora">hh:mm:ss</b>
             </p>
 
@@ -545,7 +546,7 @@
                 -->
                 <tr class="table-footer top-line"></tr>
                     <td class="" colspan="2"><h2>SUBTOTAL:</h2></td>
-                    <td colspan="2"><h2 id="subtotal">NaN</h2></td>
+                    <td colspan="2"><h2 id="subtotal_id">NaN</h2></td>
                 </tr>
                 <tr class="table-footer top-line"></tr>
                     <td class="" colspan="2"><h2>IVA:</h2></td>
@@ -582,13 +583,19 @@
             </p>
     </div>
     <script>
+        
+        var fechaElement = document.getElementById("fechaR").textContent = fecha;
         var idfacturaElement = document.getElementById("idfactura_id").textContent = idfactura;
-        var nroMesaElement = document.getElementById("nro_mesa_id").textContent = nro_mesa;
+        var idclienteElement = document.getElementById("idcliente_id").textContent = idcliente;
+        var subtotalElement = document.getElementById("subtotal_id").textContent = subtotal;
+        var ivaElement = document.getElementById("iva_id").textContent = iva;
         var nroDireccion = document.getElementById("nro_direccion_id").textContent = direc;
-
-
         var fechaElement = document.getElementById("fechaR").textContent = fecha;
         var fecha_entregaElement = document.getElementById("hora").textContent = fecha_entrega;
+        var totalElement = document.getElementById("total").textContent = total;
+        var subtotal_descElement = document.getElementById("efectivo").textContent = descuento;
+        var descuentoElement = document.getElementById("devueltas").textContent = subtotal_desc;
+        var estadoElement = document.getElementById("estado").textContent = estado;
 
         /*const propinaCell = document.getElementById("propinaCell");
         var propinaElement = document.getElementById("propina");
@@ -611,10 +618,6 @@
              // Si domi no es "N/A", muestra el valor en el elemento <h2>
              domiElement.textContent = domi;
             }       */
-        var totalElement = document.getElementById("total").textContent = total;
-        var subtotal_descElement = document.getElementById("efectivo").textContent = descuento;
-        var descuentoElement = document.getElementById("devueltas").textContent = subtotal_desc;
-        var estadoElement = document.getElementById("estado").textContent = estado;
     </script>
 
 
