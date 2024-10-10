@@ -108,6 +108,8 @@
         var propina = params.has('propina') ? params.get('propina') : "N/A";
 
         var total = params.has('total') ? params.get('total') : "";
+        var subtotal = params.has('subtotal') ? params.get('subtotal') : "";
+
         var subtotal_desc = params.has('subtotal_desc') ? params.get('subtotal_desc') : " ";
         var descuento = params.has('descuento') ? params.get('descuento') : " ";
         var estado = params.has('estado') ? params.get('estado') : "--";
@@ -121,6 +123,8 @@
         propina = parseFloat(propina).toLocaleString('es-ES', { minimumFractionDigits: 0 });
         domi = parseFloat(domi).toLocaleString('es-ES', { minimumFractionDigits: 0 });
         total = parseFloat(total).toLocaleString('es-ES', { minimumFractionDigits: 0 });
+        subtotal = parseFloat(subtotal).toLocaleString('es-ES', { minimumFractionDigits: 0 });
+
         descuento = parseFloat(descuento).toLocaleString('es-ES', { minimumFractionDigits: 0 });
         subtotal_desc = parseFloat(subtotal_desc).toLocaleString('es-ES', { minimumFractionDigits: 0 });
         
@@ -465,7 +469,7 @@
         </div>
         
         <div class="label">
-            <b>TICKET:</b>
+            <b>PRESUPUESTO:</b>
             <h1 class="nro_boleta" id="nro_boleta_id"></h1>
             <h1 class="nro_mesa" id="nro_mesa_id">---</h1>
             <h3 class="direccion" id="nro_direccion_id">---</h3>
@@ -515,12 +519,14 @@
                     spaceRow.innerHTML = `<td colspan="3">&nbsp;</td>`;
                     tablaBody.appendChild(spaceRow);
 
-                </script><tr class="table-item">
+                </script>
+                <!--
+                <tr class="table-item">
                         <td class="item">0</td>
                         <td class="item">No hay articulos</td>
                         <td class="item">0</td>
                     </tr><tr><td colspan="3">&nbsp;</td></tr>
-                <!-- 
+                 
                 <tr class="table-footer top-line">
                     <td class=""  colspan="2" id="propincell"><h4>Propina Sugerida:</h4></td>
                     <td colspan="2"><h4 id="propina"></h4></td>
@@ -529,11 +535,14 @@
                     <td class=""  colspan="2" id="domicilioCell"><h4>DOMICILIO:</h4></td>
                     <td colspan="2"><h4 id="domi"></h4></td>
                 </tr>
-               -->
+                -->
                 <tr class="table-footer">
                     <td colspan="2"><h2>EFECTIVO:</h2></td>
                     <td colspan="2"><h2 id="efectivo">NaN</h2></td>
-                    
+                </tr>
+                <tr class="table-footer">
+                    <td colspan="2"><h2>SUBTOTAL:</h2></td>
+                    <td colspan="2"><h2 id="subtotal">NaN</h2></td>
                 </tr>
                 <tr class="table-footer top-line">
                     <td class="" colspan="2"><h2>TOTAL:</h2></td>
@@ -595,6 +604,7 @@
              domiElement.textContent = domi;
             }       */
         var totalElement = document.getElementById("total").textContent = total;
+        var subtotalElement = document.getElementById("subtotal").textContent = subtotal;
         var subtotal_descElement = document.getElementById("efectivo").textContent = descuento;
         var descuentoElement = document.getElementById("devueltas").textContent = subtotal_desc;
         var estadoElement = document.getElementById("estado").textContent = estado;
