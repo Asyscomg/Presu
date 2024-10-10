@@ -114,8 +114,8 @@
 
         //Recibe los datos de los servicios (separados por comas)
         var cantidades = params.has('cantidades') ? params.get('cantidades') : "0";
-        var descripciones = params.has('servicios') ? params.get('servicios') : "No hay articulos";
-        var p_units = params.has('p_unit') ? params.get('p_unit') : "0.00";
+        var descripciones = params.has('descripciones') ? params.get('descripciones') : "No hay articulos";
+        var p_units = params.has('precio') ? params.get('precio') : "0.00";
         
         //Formato de 2 decimales
         propina = parseFloat(propina).toLocaleString('es-ES', { minimumFractionDigits: 0 });
