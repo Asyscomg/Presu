@@ -111,7 +111,7 @@
         var iva = params.has('iva') ? params.get('iva') : "---";
         var total = params.has('total') ? params.get('total') : "---";
         
-        var fecha_entrega = params.has('fecha_entrega') ? params.get('fecha_entrega') : "hh:mm:ss";
+        var fecha_entrega = params.has('fecha') ? params.get('fecha') : "hh:mm:ss";
         var domi = params.has('domi') ? params.get('domi') : "N/A";
         var propina = params.has('propina') ? params.get('propina') : "N/A";
 
@@ -536,21 +536,31 @@
                     <td class=""  colspan="2" id="domicilioCell"><h4>DOMICILIO:</h4></td>
                     <td colspan="2"><h4 id="domi"></h4></td>
                 </tr>
-               -->
+               
                 <tr class="table-footer">
                     <td colspan="2"><h2>EFECTIVO:</h2></td>
                     <td colspan="2"><h2 id="efectivo">NaN</h2></td>
                     
                 </tr>
+                -->
+                <tr class="table-footer top-line"></tr>
+                    <td class="" colspan="2"><h2>SUBTOTAL:</h2></td>
+                    <td colspan="2"><h2 id="subtotal">NaN</h2></td>
+                </tr>
+                <tr class="table-footer top-line"></tr>
+                    <td class="" colspan="2"><h2>IVA:</h2></td>
+                    <td colspan="2"><h2 id="iva">NaN</h2></td>
+                </tr>
                 <tr class="table-footer top-line">
                     <td class="" colspan="2"><h2>TOTAL:</h2></td>
                     <td colspan="2"><h2 id="total">NaN</h2></td>
                 </tr>
+                <!--
                 <tr class="table-footer">
                     <td colspan="2"><h2>DEVUELTAS:</h2></td>
                     <td colspan="2"><h2 id="devueltas">NaN</h2></td>
                 </tr>
-                
+                -->
             </tbody>
         </table>
         <br>
