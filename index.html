@@ -97,18 +97,18 @@
         const params = new URLSearchParams(window.location.search);
 
         // Obtener los valores de los parámetros
-        var nro_boleta = params.has('boleta') ? params.get('boleta') : "---";
-        var nro_mesa = params.has('mesa') ? params.get('mesa') : "---";
-        var direc = params.has('direccion') ? params.get('direccion') : "---";
+        //var nro_boleta = params.has('boleta') ? params.get('boleta') : "---";
+        //var nro_mesa = params.has('mesa') ? params.get('mesa') : "---";
+        //var direc = params.has('direccion') ? params.get('direccion') : "---";
         
 
-        //var fecha = params.has('fecha') ? params.get('fecha') : "dd/mm/aaaa hh:mm:ss";
+        var fecha = params.has('fecha') ? params.get('fecha') : "dd/mm/aaaa hh:mm:ss";
         //var fecha_entrega = params.has('fecha_entrega') ? params.get('fecha_entrega') : "hh:mm:ss";
         //var domi = params.has('domi') ? params.get('domi') : "N/A";
         //var propina = params.has('propina') ? params.get('propina') : "N/A";
         
-        var total = params.has('total') ? params.get('total') : "N/A";
-        var subtotal = params.has('subtotal') ? params.get('subtotal') : "N/A";
+        var total = params.has('total') ? params.get('total') : " ";
+        var subtotal = params.has('subtotal') ? params.get('subtotal') : " ";
         
         //var subtotal_desc = params.has('subtotal_desc') ? params.get('subtotal_desc') : " ";
         //var descuento = params.has('descuento') ? params.get('descuento') : " ";
@@ -124,8 +124,8 @@
         //Formato de 2 decimales
         //propina = parseFloat(propina).toLocaleString('es-ES', { minimumFractionDigits: 0 });
         //domi = parseFloat(domi).toLocaleString('es-ES', { minimumFractionDigits: 0 });
-        //total = parseFloat(total).toLocaleString('es-ES', { minimumFractionDigits: 0 });
-        //subtotal = parseFloat(subtotal).toLocaleString('es-ES', { minimumFractionDigits: 0 });
+        total = parseFloat(total).toLocaleString('es-ES', { minimumFractionDigits: 0 });
+        subtotal = parseFloat(subtotal).toLocaleString('es-ES', { minimumFractionDigits: 0 });
 
         //descuento = parseFloat(descuento).toLocaleString('es-ES', { minimumFractionDigits: 0 });
         //subtotal_desc = parseFloat(subtotal_desc).toLocaleString('es-ES', { minimumFractionDigits: 0 });
@@ -617,16 +617,5 @@
         //var descuentoElement = document.getElementById("devueltas").textContent = subtotal_desc;
         //var estadoElement = document.getElementById("estado").textContent = estado;
     </script>
-
-
-
-
-
-
-
-
-
-
-
 
 </div></body></html>
