@@ -109,15 +109,18 @@
 
         var total = params.has('total') ? params.get('total') : "";
         var subtotal = params.has('subtotal') ? params.get('subtotal') : "";
+        
 
         var subtotal_desc = params.has('subtotal_desc') ? params.get('subtotal_desc') : " ";
         var descuento = params.has('descuento') ? params.get('descuento') : " ";
         var estado = params.has('estado') ? params.get('estado') : "--";
 
         //Recibe los datos de los servicios (separados por comas)
+        
         var cantidades = params.has('cantidades') ? params.get('cantidades') : "0";
         var descripciones = params.has('descripciones') ? params.get('descripciones') : "No hay articulos";
         var p_units = params.has('precio') ? params.get('precio') : "0.00";
+        var totallinea = params.has('totallinea') ? params.get('totallinea') : "0.00";
         
         //Formato de 2 decimales
         propina = parseFloat(propina).toLocaleString('es-ES', { minimumFractionDigits: 0 });
@@ -132,6 +135,7 @@
         cantidades = cantidades.split(",");
         descripciones = descripciones.split(","); 
         p_units = p_units.split(",");
+        totallinea = totallinea.split(",");
 
         //Crea una lista para mostrar en cada fila de la tabla
         var result = [];
@@ -141,6 +145,7 @@
                 cantidad: cantidades[id],
                 descripcion: descripciones[id], // + " " + detalles[id], // Descomenta si deseas concatenar la descripción con el detalle
                 precio_unit: parseFloat(p_units[id]).toLocaleString('es-ES', { minimumFractionDigits: 0 }),
+                totallinea: parseFloat(totallinea[id]).toLocaleString('es-ES', { minimumFractionDigits: 0 }),
             };
         });
     </script>
@@ -476,10 +481,11 @@
         </div>
         <div class="label">
             <p class="fecha_recepcion">
-                FECHA DE RECEPCION:
+                FECHA:
                 <br>
-                <b id="fechaR">dd/mm/aaaa hh:mm:ss</b>
-                <b span="" id="hora">hh:mm:ss</b>
+                <b id="fechaR">dd/mm/aaaa</b>
+                <!--<b id="fechaR">dd/mm/aaaa hh:mm:ss</b>
+                <b span="" id="hora">hh:mm:ss</b>-->
             </p>
 
         </div>
@@ -492,7 +498,8 @@
                 <tr class="table-header">
                     <th><h2>Cant</h2></th>
                     <th><h2>Descripcion</h2></th>
-                    <th><h2>Total</h2></th>
+                    <th><h2>Precio Uni</h2></th>
+                    <th><h2>Importe</h2></th>
                 </tr>
                 <script>
                     /*var result = [
@@ -511,6 +518,7 @@
                         <td class="item">${row.cantidad}</td>
                         <td class="item">${row.descripcion}</td>
                         <td class="item">${row.precio_unit}</td>
+                        <td class="item">${row.totallinea}</td>
                     `;
                     tablaBody.appendChild(newRow);
                     });
@@ -605,6 +613,7 @@
             }       */
         var totalElement = document.getElementById("total").textContent = total;
         var subtotalElement = document.getElementById("subtotal").textContent = subtotal;
+        var totallineaElement = document.getElementById("totallinea").textContent = totallinea;
         var subtotal_descElement = document.getElementById("efectivo").textContent = descuento;
         var descuentoElement = document.getElementById("devueltas").textContent = subtotal_desc;
         var estadoElement = document.getElementById("estado").textContent = estado;
