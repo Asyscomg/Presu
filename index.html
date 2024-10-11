@@ -109,6 +109,7 @@
         //var domi = params.has('domi') ? params.get('domi') : "N/A";
         //var propina = params.has('propina') ? params.get('propina') : "N/A";
         
+        var idfactura = params.has('idfactura') ? params.get('idfactura') : " ";
         var total = params.has('total') ? params.get('total') : " ";
         var subtotal = params.has('subtotal') ? params.get('subtotal') : " ";
         var iva = params.has('iva') ? params.get('iva') : " ";
@@ -475,6 +476,7 @@
         
         <div class="label" align="center">
             <b>PRESUPUESTO:</b>
+            <h1 class="idfactura" id="idfactura_id"></h1>
             <h1 class="nro_boleta" id="nro_boleta_id"></h1>
             <h1 class="nro_mesa" id="nro_mesa_id">---</h1>
             <h3 class="direccion" id="nro_direccion_id">---</h3>
@@ -591,6 +593,8 @@
             </p>
     </div>
     <script>
+        
+        var idfacturaElement = document.getElementById("idfactura_id").textContent = idfactura;
         //var nroBoletaElement = document.getElementById("nro_boleta_id").textContent = nro_boleta;
         //var nroMesaElement = document.getElementById("nro_mesa_id").textContent = nro_mesa;
         //var nroDireccion = document.getElementById("nro_direccion_id").textContent = direc;
